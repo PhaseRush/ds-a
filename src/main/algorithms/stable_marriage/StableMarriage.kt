@@ -9,12 +9,13 @@ import java.util.stream.Collectors
 import java.util.stream.IntStream
 import kotlin.collections.HashMap
 
+const val n = 420 // CHANGE THIS NUMBER FOR DIFFERENT SIZE TEST CASES
+const val writeToFile = true // change this for file recording
+val random = Random("ti ezalb".hashCode().toLong()) //use seed for reproducibility
+
 fun main() {
-    val n = 420 // CHANGE THIS NUMBER FOR DIFFERENT SIZE TEST CASES
-    val random = Random("ti ezalb".hashCode().toLong()) //use seed for reproducibility
     val men = init(n, "m")
     val women = init(n, "w")
-
 
     val shuffledMen = ArrayList(men) // these two temp lists is my lazy way of
     val shuffledWomen = ArrayList(women) // emulating python's random.sample
@@ -29,9 +30,9 @@ fun main() {
                 women[i],
                 women[i].prefs!!.stream().map { p -> p.id }.collect(Collectors.joining(" ")))
         println(initState)
-        File(System.getProperty("user.dir") + "/outputs/420.txt").appendText("\n" + initState)
+        if (writeToFile) File(System.getProperty("user.dir") + "/outputs/420.txt").appendText("\n" + initState)
     }
-    prettyPrint(stableMarriage(men))
+    prettyPrint(stableMarriage(men), writeToFile)
 }
 
 /**
@@ -78,9 +79,9 @@ private fun stableMarriage(men: List<Person>): Map<Person, Person> {
  * Util function for printing generated pairs
  * @param pairs input map
  */
-private fun prettyPrint(pairs: Map<Person, Person>) {
+private fun prettyPrint(pairs: Map<Person, Person>, writeToFile: Boolean = false) {
     pairs.forEach { (k, v) -> print(String.format("(%s : %s)\t", k, v)) }
-    File(System.getProperty("user.dir") + "/outputs/420.txt").appendText("\n" + pairs.toString())
+    if (writeToFile) File(System.getProperty("user.dir") + "/outputs/420.txt").appendText("\n" + pairs.toString())
     println()
 }
 
