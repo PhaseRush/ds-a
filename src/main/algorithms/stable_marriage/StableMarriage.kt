@@ -2,6 +2,7 @@ package stable_marriage
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.io.File
 import java.util.*
 import java.util.Arrays.asList
 import java.util.stream.Collectors
@@ -9,8 +10,8 @@ import java.util.stream.IntStream
 import kotlin.collections.HashMap
 
 fun main() {
-    val n = 3 // CHANGE THIS NUMBER FOR DIFFERENT SIZE TEST CASES
-    val random = Random("2133".hashCode().toLong()) //use seed for reproducibility
+    val n = 420 // CHANGE THIS NUMBER FOR DIFFERENT SIZE TEST CASES
+    val random = Random("ti ezalb".hashCode().toLong()) //use seed for reproducibility
     val men = init(n, "m")
     val women = init(n, "w")
 
@@ -22,11 +23,13 @@ fun main() {
         shuffledWomen.shuffle(random)
         men[i].prefs = LinkedList(shuffledWomen)
         women[i].prefs = LinkedList(shuffledMen)
-        println(String.format("%s: [%s]\t%s: [%s]",
+        val initState = String.format("%s: [%s]\t%s: [%s]",
                 men[i],
                 men[i].prefs!!.stream().map { p -> p.id }.collect(Collectors.joining(" ")),
                 women[i],
-                women[i].prefs!!.stream().map { p -> p.id }.collect(Collectors.joining(" "))))
+                women[i].prefs!!.stream().map { p -> p.id }.collect(Collectors.joining(" ")))
+        println(initState)
+        File(System.getProperty("user.dir") + "/outputs/420.txt").appendText("\n" + initState)
     }
     prettyPrint(stableMarriage(men))
 }
@@ -77,6 +80,7 @@ private fun stableMarriage(men: List<Person>): Map<Person, Person> {
  */
 private fun prettyPrint(pairs: Map<Person, Person>) {
     pairs.forEach { (k, v) -> print(String.format("(%s : %s)\t", k, v)) }
+    File(System.getProperty("user.dir") + "/outputs/420.txt").appendText("\n" + pairs.toString())
     println()
 }
 
