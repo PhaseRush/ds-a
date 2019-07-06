@@ -9,7 +9,7 @@ import java.util.stream.Collectors
 import java.util.stream.IntStream
 import kotlin.collections.HashMap
 
-const val n = 420 // CHANGE THIS NUMBER FOR DIFFERENT SIZE TEST CASES
+const val n = 40 // CHANGE THIS NUMBER FOR DIFFERENT SIZE TEST CASES
 const val writeToFile = true // change this for file recording
 val random = Random("ti ezalb".hashCode().toLong()) //use seed for reproducibility
 
