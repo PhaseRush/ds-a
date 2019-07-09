@@ -42,6 +42,14 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
         return true
     }
 
+    /**
+     * https://en.wikipedia.org/wiki/Bloom_filter#Approximating_the_number_of_items_in_a_Bloom_filter
+     */
+    fun approxElements(): Int {
+        val ones = hashes.toByteArray().count { b -> b == 1.toByte() }
+        return (-hashes.size()/numHashes.toDouble() * log(1-(ones/hashes.size().toDouble()), Math.E)).toInt()
+    }
+
     fun clear() {
         hashes.clear()
     }

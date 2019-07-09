@@ -9,6 +9,7 @@ import java.util.stream.Collectors
 import java.util.stream.IntStream
 import kotlin.collections.HashMap
 
+
 const val n = 40 // CHANGE THIS NUMBER FOR DIFFERENT SIZE TEST CASES
 const val writeToFile = true // change this for file recording
 val random = Random("ti ezalb".hashCode().toLong()) //use seed for reproducibility
@@ -73,6 +74,25 @@ private fun stableMarriage(men: List<Person>): Map<Person, Person> {
     }
 
     return pairs
+}
+
+
+//private fun stableMarriageBruteForce(men: List<Person>) : Map<Person, Person> {
+//
+//}
+
+private fun generatePerm(original: MutableList<Person>): List<List<Person>> {
+    val firstElement = original.removeAt(0)
+    val returnValue = ArrayList<List<Person>>()
+    val permutations = generatePerm(original)
+    for (smallerPermutated in permutations) {
+        for (index in 0..smallerPermutated.size) {
+            val temp = ArrayList(smallerPermutated)
+            temp.add(index, firstElement)
+            returnValue.add(temp)
+        }
+    }
+    return returnValue
 }
 
 /**
