@@ -10,7 +10,7 @@ public class BloomFilterTest {
   int elements = 1_000000;
   int bitsize = 10_000000;
   BloomFilter<Integer> filter;
-  //BloomFilterJ filter;
+  // BloomFilterJ filter;
   Random prng;
   ThreadMXBean bean;
 

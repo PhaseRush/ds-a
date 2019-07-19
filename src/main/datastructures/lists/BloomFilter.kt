@@ -47,21 +47,27 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
      */
     fun approxElements(): Int {
         val ones = hashes.toByteArray().count { b -> b == 1.toByte() }
-        return (-hashes.size()/numHashes.toDouble() * log(1-(ones/hashes.size().toDouble()), Math.E)).toInt()
+        return (-hashes.size() / numHashes.toDouble() * log(1 - (ones / hashes.size().toDouble()), Math.E)).toInt()
     }
 
     fun clear() {
         hashes.clear()
     }
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+    // simplified this thanks to xaanit and alpha;helix
+//    override fun equals(other: Any?): Boolean =
+//            if (this === other) true else when (other) {
+//                is BloomFilter<*> -> hashes == other.hashes && numHashes == other.numHashes
+//                else -> false
+//
+//            }
 
-        other as BloomFilter<*>
+    // dannie
+    override fun equals(other: Any?): Boolean =
+            (other as? BloomFilter<*>)?.let { filter ->
+                hashes == filter.hashes && numHashes == filter.numHashes
+            } ?: false
 
-        return hashes == other.hashes && numHashes == other.numHashes
-    }
 
     override fun hashCode(): Int {
         return hashes.hashCode().xor(numHashes)
