@@ -22,10 +22,10 @@ public class Day2 {
     }
 
     public static boolean isHappy(int n) {
-        Set<Integer> dejavu = new HashSet<>();
+        Set<Integer> dejaVu = new HashSet<>();
         while (n != 1) {
-            if (dejavu.contains(n)) return false;
-            dejavu.add(n);
+            if (dejaVu.contains(n)) return false;
+            dejaVu.add(n);
             n = f(n);
         }
         return true;
