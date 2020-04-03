@@ -1,4 +1,4 @@
-package main.leetcode.advent;
+package main.leetcode.advent.week1;
 
 public class Day3 {
     public static void main(String[] args) {

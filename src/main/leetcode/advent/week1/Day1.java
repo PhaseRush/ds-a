@@ -1,4 +1,4 @@
-package main.leetcode.advent;
+package main.leetcode.advent.week1;
 
 import java.util.Arrays;
 
