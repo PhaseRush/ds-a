@@ -19,12 +19,6 @@
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-bloomFilterTest</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>bloomFilterTest</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.5.0-M1</version>
@@ -35,11 +29,6 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>1.21</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>1.3.41</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -64,13 +53,6 @@
                             <goal>compile</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>bloomFilterTest-compile</id>
-                        <phase>bloomFilterTest-compile</phase>
-                        <goals>
-                            <goal>bloomFilterTest-compile</goal>
-                        </goals>
-                    </execution>
                 </executions>
                 <configuration>
                     <jvmTarget>1.8</jvmTarget>
@@ -85,13 +67,6 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>testCompile</id>
-                        <phase>bloomFilterTest-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
                         </goals>
                     </execution>
                 </executions>
