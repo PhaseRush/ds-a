@@ -1,6 +1,6 @@
-package leetcode.linkedlists;
+package main.leetcode.linkedlists;
 
-import leetcode.structure.ListNode;
+import main.leetcode.structure.ListNode;
 
 public class RemoveNthNodeFromEndOfList {
     public ListNode removeNthFromEnd(ListNode head, int n) {

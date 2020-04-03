@@ -1,4 +1,4 @@
-package leetcode.linkedlists;
+package main.leetcode.linkedlists;
 
 import leetcode.structure.ListNode;
 

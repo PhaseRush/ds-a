@@ -1,4 +1,4 @@
-package leetcode.arrays;
+package main.leetcode.arrays;
 
 public class BuySellStock2 {
     public static void main(String[] args) {

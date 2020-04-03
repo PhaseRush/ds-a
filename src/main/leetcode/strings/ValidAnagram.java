@@ -1,4 +1,4 @@
-package leetcode.strings;
+package main.leetcode.strings;
 
 public class ValidAnagram {
     public boolean isAnagram(String s, String t) {
