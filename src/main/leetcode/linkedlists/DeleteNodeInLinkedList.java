@@ -1,8 +1,6 @@
 package main.leetcode.linkedlists;
 
-import leetcode.structure.ListNode;
-
-import java.util.List;
+import main.leetcode.structure.ListNode;
 
 public class DeleteNodeInLinkedList {
     public static void main(String[] args) {
