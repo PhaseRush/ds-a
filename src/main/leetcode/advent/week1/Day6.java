@@ -1,9 +1,6 @@
 package main.leetcode.advent.week1;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Day6 {
@@ -13,16 +10,20 @@ public class Day6 {
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
-        Map<Map<Integer, Long>, List<String>> seen = new HashMap<>();
-        for (String str : strs) {
-            Map<Integer, Long> freq = str.chars()
-                    .boxed()
-                    .collect(Collectors.groupingBy(i -> i,
-                            Collectors.counting()));
-            List<String> list = seen.getOrDefault(freq, new ArrayList<>());
-            list.add(str);
-            seen.put(freq, list);
-        }
-        return new ArrayList<>(seen.values());
+        return new ArrayList<>(Arrays.stream(strs)
+                .map(str -> new AbstractMap.SimpleEntry<>(str, str))
+                .map(pair -> new AbstractMap.SimpleEntry<>(pair.getKey().chars()
+                        .boxed()
+                        .collect(Collectors.groupingBy(i -> i,
+                                Collectors.counting())),
+                        pair.getValue()))
+                .collect(Collectors.toMap(
+                        AbstractMap.SimpleEntry::getKey,
+                        entry -> new ArrayList<>(Collections.singletonList(entry.getValue())),
+                        (oldList, newList) -> {
+                            oldList.addAll(newList);
+                            return oldList;
+                        }))
+                .values());
     }
 }
