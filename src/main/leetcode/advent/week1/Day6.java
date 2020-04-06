@@ -44,6 +44,7 @@ public class Day6 {
                 .values());
     }
 
+    @SuppressWarnings("Duplicates")
     public static List<List<String>> actuallyOneLine(String[] strs) {
         return new ArrayList<>(Arrays.stream(strs).map(str -> new AbstractMap.SimpleEntry<>(str, str)).map(pair -> new AbstractMap.SimpleEntry<>(pair.getKey().chars().boxed().collect(Collectors.groupingBy(i -> i, Collectors.counting())), pair.getValue())).collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, entry -> new ArrayList<>(Collections.singletonList(entry.getValue())), (oldList, newList) -> {oldList.addAll(newList);return oldList; })).values());
     }
