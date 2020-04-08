@@ -1,7 +1,6 @@
 package main.leetcode.advent.week1;
 
 
-
 import main.datastructures.Pair;
 
 import java.util.Arrays;
@@ -49,14 +48,6 @@ public class Day7 {
     }
 
     public static int oneLiner(int[] arr) {
-        return Arrays.stream(arr).boxed()
-                .map(i -> new Pair<>(i, Arrays.stream(arr).boxed().collect(Collectors.toSet())))
-                .map(pair -> pair.second.contains(pair.first + 1) ? 1 : 0)
-                .reduce(Integer::sum)
-                .orElseThrow();
-    }
-
-    public static int otherOneLiner(int[] arr) {
         return Arrays.stream(arr).boxed()
                 .map(i -> Arrays.stream(arr).boxed().collect(Collectors.toSet()).contains(i + 1) ? 1 : 0)
                 .reduce(Integer::sum)
