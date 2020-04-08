@@ -1,6 +1,8 @@
 package main.leetcode.advent.week1;
 
-import kotlin.Pair;
+
+
+import main.datastructures.Pair;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -43,13 +45,13 @@ Constraints:
 public class Day7 {
     public static void main(String[] args) {
         int[] in = {1, 2, 3};
-        System.out.println(otherOneLiner(in));
+        System.out.println(oneLiner(in));
     }
 
     public static int oneLiner(int[] arr) {
         return Arrays.stream(arr).boxed()
                 .map(i -> new Pair<>(i, Arrays.stream(arr).boxed().collect(Collectors.toSet())))
-                .map(pair -> pair.getSecond().contains(pair.getFirst() + 1) ? 1 : 0)
+                .map(pair -> pair.second.contains(pair.first + 1) ? 1 : 0)
                 .reduce(Integer::sum)
                 .orElseThrow();
     }
