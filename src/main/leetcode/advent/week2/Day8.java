@@ -4,7 +4,8 @@ import main.leetcode.structure.ListNode;
 
 public class Day8 {
     public static void main(String[] args) {
-
+        ListNode head = ListNode.createList(1, 2, 3, 4, 5);
+        System.out.println(middleNode(head));
     }
 
     public static ListNode middleNode(ListNode head) {
