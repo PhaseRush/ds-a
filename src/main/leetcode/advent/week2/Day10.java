@@ -1,5 +1,6 @@
 package main.leetcode.advent.week2;
 
+import java.util.ArrayDeque;
 import java.util.Stack;
 
 public class Day10 {
@@ -13,15 +14,15 @@ public class Day10 {
 
 
     static class MinStack {
-        Stack<Integer> stack;
-        Stack<Integer> mins;
+        ArrayDeque<Integer> stack;
+        ArrayDeque<Integer> mins;
 
         /**
          * initialize your data structure here.
          */
         public MinStack() {
-            stack = new Stack<>();
-            mins = new Stack<>();
+            stack = new ArrayDeque<>();
+            mins = new ArrayDeque<>();
         }
 
         public void push(int x) {
