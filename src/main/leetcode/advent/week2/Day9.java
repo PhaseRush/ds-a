@@ -8,15 +8,14 @@ public class Day9 {
     }
 
     private static Stack<Character> f(String s) {
-        Stack<Character> stack = new Stack<>();
-        for (char c : s.toCharArray()) {
-            if (c == '#') {
-                if (!stack.isEmpty()) stack.pop();
-            } else {
-                stack.push(c);
-            }
-        }
-        return stack;
+        return s.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Stack::new, (st, ch) -> {
+                    if (ch == '#') {
+                        if (!st.isEmpty()) st.pop();
+                    } else st.push(ch);
+                }, (a, b) -> {
+                });
     }
 
     public static boolean backspaceCompare(String S, String T) {
