@@ -20,8 +20,6 @@ public class Day9 {
     }
 
     public static boolean backspaceCompare(String S, String T) {
-        Stack<Character> stackS = f(S);
-        Stack<Character> stackT = f(T);
-        return stackS.equals(stackT);
+        return f(S).equals(f(T));
     }
 }
