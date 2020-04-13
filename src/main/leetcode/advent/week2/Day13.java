@@ -25,4 +25,30 @@ public class Day13 {
         }
         return max;
     }
+
+    // old solution, TLE
+
+    public static int findMaxLength2(int[] nums) {
+        return helper(nums, 0, nums.length);
+    }
+
+    private static boolean valid(int[] nums, int start, int end) {
+        int zeros = 0, ones = 0;
+        for (int i = start; i < end; i++) {
+            if (nums[i] == 0) zeros++;
+            else ones++;
+        }
+        return zeros == ones;
+    }
+
+    private static int helper(int[] nums, int start, int end) {
+        if (valid(nums, start, end)) {
+            return end - start;
+        } else {
+            return Math.max(
+                    helper(nums, start + 1, end),
+                    helper(nums, start, end - 1)
+            );
+        }
+    }
 }
