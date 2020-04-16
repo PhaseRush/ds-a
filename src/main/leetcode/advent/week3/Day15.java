@@ -1,6 +1,7 @@
 package main.leetcode.advent.week3;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Day15 {
     public static void main(String[] args) {
@@ -21,10 +22,8 @@ public class Day15 {
             left[i] = left[i - 1] * nums[i - 1];
             right[len - i - 1] = right[len - i] * nums[len - i];
         }
-        int[] ans = new int[len];
-        for (int i = 0; i < len; i++) {
-            ans[i] = left[i] * right[i];
-        }
-        return ans;
+        return IntStream.range(0, len)
+                .map(i -> left[i] * right[i])
+                .toArray();
     }
 }
