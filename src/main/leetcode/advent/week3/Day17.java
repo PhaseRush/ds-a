@@ -5,7 +5,7 @@ import java.util.Deque;
 
 public class Day17 {
     public static void main(String[] args) {
-        System.out.println(numIslands2(new char[][]{
+        System.out.println(numIslands(new char[][]{
                 {'1', '1', '1', '1', '0'},
                 {'1', '1', '0', '1', '0'},
                 {'1', '1', '0', '0', '0'},
@@ -34,7 +34,7 @@ public class Day17 {
         }
     }
 
-    public static int numIslands2(char[][] grid) {
+    public static int numIslands(char[][] grid) {
         if (grid.length == 0) return 0;
         boolean[][] visited = new boolean[grid.length][grid[0].length];
         int islands = 0;
