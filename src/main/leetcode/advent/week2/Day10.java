@@ -1,7 +1,6 @@
 package main.leetcode.advent.week2;
 
 import java.util.ArrayDeque;
-import java.util.Stack;
 
 public class Day10 {
     public static void main(String[] args) {
