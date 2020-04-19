@@ -1,8 +1,8 @@
-package datastructures.trees.heaps;
+package main.datastructures.trees.heaps;
 
 import java.util.Comparator;
 
-public class MinHeap<T> extends Heap<T> {
+public class MinHeap<T> extends main.datastructures.trees.heaps.Heap<T> {
   private T[] array;
   private int size;
   private int maxSize;

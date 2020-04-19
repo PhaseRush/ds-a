@@ -1,4 +1,4 @@
-package datastructures.trees.heaps;
+package main.datastructures.trees.heaps;
 
 import java.util.Comparator;
 import java.util.Objects;
