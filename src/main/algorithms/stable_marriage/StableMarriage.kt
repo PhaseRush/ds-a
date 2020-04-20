@@ -46,7 +46,7 @@ fun main() {
  */
 private fun stableMarriage(men: List<Person>): Map<Person, Person> {
     val pairs = HashMap<Person, Person>() // BiHashMap representing couples. Keys are men
-    val todo = LinkedList(men) // unengaged men
+    val todo = ArrayDeque(men) // unengaged men
 
     while (todo.isNotEmpty()) {
         val man = todo.pop()
