@@ -29,10 +29,7 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
     }
 
     fun containsAll(elements: Collection<T>): Boolean {
-        for (e in elements) {
-            if (!contains(e)) return false
-        }
-        return true
+        return elements.all(this::contains)
     }
 
     fun isEmpty(): Boolean {
