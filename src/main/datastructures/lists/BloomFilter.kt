@@ -5,6 +5,7 @@ import kotlin.math.log
 import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.round
+import kotlin.sequences.asSequence as pleaseStreamThis
 
 class BloomFilter<T> /*@JvmOverloads constructor*/(
         private val numElements: Int = 25,
@@ -20,12 +21,12 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
         boundedRandom.init(element).forEach { r -> hashes.set(r.currValue) }
     }
 
+    // ty dannie
     fun contains(element: T): Boolean {
-        boundedRandom.init(element)
-        for (r in boundedRandom) {
-            if (!hashes.get(r.currValue)) return false
-        }
-        return true
+        return boundedRandom.init(element).pleaseStreamThis()
+                .map { rand -> hashes.get(rand.currValue) }
+                .any { res -> res == false }
+                .not()
     }
 
     fun containsAll(elements: Collection<T>): Boolean {
@@ -59,7 +60,7 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
 //
 //            }
 
-    // dannie
+    // dannie https://discordapp.com/channels/208023865127862272/208023865127862272/723621182938808451
     override fun equals(other: Any?): Boolean =
             (other as? BloomFilter<*>)?.let { filter ->
                 hashes == filter.hashes && numHashes == filter.numHashes
