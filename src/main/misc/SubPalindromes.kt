@@ -11,8 +11,6 @@ fun main() {
     val evenFreqMap = input.groupingBy { it }.eachCount()
             .filterValues { freq -> freq % 2 == 0 }
 
-    println("At least one palindrome: " +
-            evenFreqMap.any())
-    println("Number of possible palindromes: " +
-            evenFreqMap.count().factorial())
+    println("At least one palindrome: " + evenFreqMap.any())
+    println("Number of possible palindromes: " + evenFreqMap.count().factorial())
 }
