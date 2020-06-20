@@ -10,9 +10,6 @@ fun main() {
     val input = readLine()!!
     val freqMap = input.groupingBy { it }.eachCount()
 
-    println("At least one palindrome: " +
-            freqMap.filterValues { freq -> freq % 2 == 0 }.any())
-
     println("Number of possible palindromes: " +
             freqMap.filterValues { freq -> freq % 2 == 0 }
                     .count()
