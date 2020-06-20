@@ -34,10 +34,10 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
     }
 
     fun isEmpty(): Boolean {
-        for (b in hashes.toByteArray()) {
-            if (b == 1.toByte()) return false
-        }
-        return true
+        return hashes.toByteArray()
+                .map { byte -> byte == 1.toByte() }
+                .any()
+                .not()
     }
 
     /**
@@ -53,13 +53,6 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
     }
 
     // simplified this thanks to xaanit and alpha;helix
-//    override fun equals(other: Any?): Boolean =
-//            if (this === other) true else when (other) {
-//                is BloomFilter<*> -> hashes == other.hashes && numHashes == other.numHashes
-//                else -> false
-//
-//            }
-
     // dannie https://discordapp.com/channels/208023865127862272/208023865127862272/723621182938808451
     override fun equals(other: Any?): Boolean =
             (other as? BloomFilter<*>)?.let { filter ->
