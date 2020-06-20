@@ -17,28 +17,24 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
     private val hashes: BitSet = BitSet(containerSize)
 
 
-    fun add(element: T) {
-        boundedRandom.init(element).forEach { r -> hashes.set(r.currValue) }
-    }
+    fun add(element: T) = boundedRandom.init(element).forEach { r -> hashes.set(r.currValue) }
+
 
     // ty dannie
-    fun contains(element: T): Boolean {
-        return boundedRandom.init(element).pleaseStreamThis()
-                .map { rand -> hashes.get(rand.currValue) }
-                .any { res -> res == false }
-                .not()
-    }
+    fun contains(element: T): Boolean = boundedRandom.init(element).pleaseStreamThis()
+            .map { rand -> hashes.get(rand.currValue) }
+            .any { res -> res == false }
+            .not()
 
-    fun containsAll(elements: Collection<T>): Boolean {
-        return elements.all(this::contains)
-    }
 
-    fun isEmpty(): Boolean {
-        return hashes.toByteArray()
-                .map { byte -> byte == 1.toByte() }
-                .any()
-                .not()
-    }
+    fun containsAll(elements: Collection<T>): Boolean = elements.all(this::contains)
+
+
+    fun isEmpty(): Boolean = hashes.toByteArray()
+            .map { byte -> byte == 1.toByte() }
+            .any()
+            .not()
+
 
     /**
      * https://en.wikipedia.org/wiki/Bloom_filter#Approximating_the_number_of_items_in_a_Bloom_filter
@@ -48,9 +44,8 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
         return (-hashes.size() / numHashes.toDouble() * log(1 - (ones / hashes.size().toDouble()), Math.E)).toInt()
     }
 
-    fun clear() {
-        hashes.clear()
-    }
+    fun clear() = hashes.clear()
+
 
     // simplified this thanks to xaanit and alpha;helix
     // dannie https://discordapp.com/channels/208023865127862272/208023865127862272/723621182938808451
@@ -60,9 +55,7 @@ class BloomFilter<T> /*@JvmOverloads constructor*/(
             } ?: false
 
 
-    override fun hashCode(): Int {
-        return hashes.hashCode().xor(numHashes)
-    }
+    override fun hashCode(): Int = hashes.hashCode().xor(numHashes)
 
 
     class BoundedRandom(
